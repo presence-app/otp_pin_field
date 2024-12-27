@@ -457,6 +457,7 @@ class OtpPinFieldState extends State<OtpPinField>
       }
       _focusNode.addListener(_focusListener);
       ending = false;
+      _focusNode.requestFocus();
       hasFocus = widget.highlightBorder;
     });
   }
