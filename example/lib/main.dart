@@ -1,7 +1,8 @@
-import 'package:example_otp_pin_field/next_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
+
+import 'next_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
               key: _otpPinFieldController,
 
               ///in case you want to enable autoFill
-              autoFillEnable: false,
+              autoFillEnable: true,
 
               ///for Ios it is not needed as the SMS autofill is provided by default, but not for Android, that's where this key is useful.
               textInputAction: TextInputAction.done,
@@ -105,12 +106,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 // filledFieldBorderColor: Colors.green,
                 //
                 /// gradient border Color for field pin box
-                activeFieldBorderGradient:
-                    LinearGradient(colors: [Colors.black, Colors.redAccent]),
-                filledFieldBorderGradient:
-                    LinearGradient(colors: [Colors.green, Colors.tealAccent]),
-                defaultFieldBorderGradient:
-                    LinearGradient(colors: [Colors.orange, Colors.brown]),
+                activeFieldBorderGradient: LinearGradient(
+                  colors: [Colors.black, Colors.redAccent],
+                ),
+                filledFieldBorderGradient: LinearGradient(
+                  colors: [Colors.green, Colors.tealAccent],
+                ),
+                defaultFieldBorderGradient: LinearGradient(
+                  colors: [Colors.orange, Colors.brown],
+                ),
                 fieldBorderWidth: 3,
               ),
               maxLength: 4,
@@ -134,18 +138,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   const SizedBox(height: 30),
                   ElevatedButton(
-                      onPressed: () {
-                        _otpPinFieldController.currentState
-                            ?.clearOtp(); // clear controller
-                      },
-                      child: const Text('clear OTP')),
+                    onPressed: () {
+                      _otpPinFieldController.currentState
+                          ?.clearOtp(); // clear controller
+                    },
+                    child: const Text('clear OTP'),
+                  ),
                   const SizedBox(height: 10),
                   ElevatedButton(
-                      onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const NextPage())),
-                      child: const Text('Next Class')),
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NextPage(),
+                      ),
+                    ),
+                    child: const Text('Next Class'),
+                  ),
                   const SizedBox(height: 30),
                 ],
               ),
